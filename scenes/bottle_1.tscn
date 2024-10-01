@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1l4o2axqcel2"]
+
+[ext_resource type="Script" path="res://scripts/trash/plastic.gd" id="1_15ubg"]
+[ext_resource type="Texture2D" uid="uid://c88yjk4dqardm" path="res://assets/sprites/trash/bottle_1.png" id="1_mxx0t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lllbl"]
+radius = 8.0
+
+[node name="Bottle_1" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_15ubg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.16667, 0.970588)
+texture = ExtResource("1_mxx0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CircleShape2D_lllbl")

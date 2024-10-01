@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5qt8ep6ckgr3"]
+
+[ext_resource type="Texture2D" uid="uid://bdy1u78e6e52o" path="res://assets/sprites/items/bucket.png" id="1_bok3f"]
+[ext_resource type="Script" path="res://scripts/controls/change_bucket.gd" id="1_e5myv"]
+[ext_resource type="FontFile" uid="uid://bdx4atijs5cen" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_dhrwg"]
+
+[node name="ChangeBucket" type="TouchScreenButton"]
+position = Vector2(-100, -100)
+texture_normal = ExtResource("1_bok3f")
+action = "change_bucket"
+script = ExtResource("1_e5myv")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 77.0
+offset_top = 309.0
+offset_right = 239.0
+offset_bottom = 340.0
+theme_override_fonts/font = ExtResource("3_dhrwg")
+theme_override_font_sizes/font_size = 20
+text = "asdasdas"

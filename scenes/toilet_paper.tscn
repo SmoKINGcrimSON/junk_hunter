@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfxspm7vxn2iq"]
+
+[ext_resource type="Texture2D" uid="uid://j51qlacud2tf" path="res://assets/sprites/trash/#1 - Transparent Icons.png" id="1_lt22b"]
+[ext_resource type="Script" path="res://scripts/trash/paper_and_cardboard.gd" id="1_pir1n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yp0b7"]
+size = Vector2(25, 26)
+
+[node name="ToiletPaper" type="CharacterBody2D"]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_pir1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lt22b")
+region_enabled = true
+region_rect = Rect2(483.147, 290.391, 27.5181, 27.8078)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_yp0b7")
