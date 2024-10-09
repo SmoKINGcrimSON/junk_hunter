@@ -3,6 +3,8 @@ class_name TrashBucket extends StaticBody2D
 @onready var area_2d: Area2D = $Area2D
 @export var player: Player
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var pick_up_sound: AudioStreamPlayer2D = $PickUpSound
+
 var buckets = {
 	0 : {
 		"type": "PaperAndCardboard",
@@ -31,18 +33,22 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if current_bucket.type == "PaperAndCardboard":
 		if body is PaperAndCardboard: #PaperAndCardboard
+			pick_up_sound.play()
 			player.coins += 1
 			print(player.coins)
 	if current_bucket.type == "Metals":
 		if body is Metals: #PaperAndCardboard
+			pick_up_sound.play()
 			player.coins += 4
 			print(player.coins)
 	if current_bucket.type == "Organico":
 		if body is Organic: #PaperAndCardboard
+			pick_up_sound.play()
 			player.coins += 2
 			print(player.coins)
 	if current_bucket.type == "Plastico":
 		if body is Plastic: #PaperAndCardboard
+			pick_up_sound.play()
 			player.coins += 3
 			print(player.coins)
 

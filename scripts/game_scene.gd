@@ -1,7 +1,12 @@
 extends Node
 
+var record: int:
+	set(value):
+		record = value
+	get():
+		return record
 var trash: PackedScene
-var spawn_interval: float = 2.0
+var trash_velocity: Vector2
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var camera_2d: Camera2D = $Camera2D
 var camera_size : Vector2
@@ -16,7 +21,13 @@ var trash_scenes = [
 @onready var player: Player = $Player
 @onready var tile_map: TileMap = $TileMap
 
+func _init() -> void:
+	self.record = 10 ###initial record
+	self.trash_velocity = Vector2(0, 2000)
+
 func _ready() -> void:
+	##spawner time
+	self.spawn_timer.wait_time = 5.0
 	##
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -32,6 +43,7 @@ func _on_spawn_timer_timeout() -> void:
 	if trash:
 		var new_trash = trash.instantiate()
 		new_trash = new_trash as Trash
+		new_trash.speed = trash_velocity
 		new_trash.player = player
 		var viewport_rect = get_viewport().get_visible_rect()
 		new_trash.position = Vector2(randf_range(camera_size.x / 2 * -1, camera_size.x / 2), camera_size.y / 2 * -1)
@@ -47,6 +59,12 @@ func _on_spawn_timer_timeout() -> void:
 func _process(delta: float) -> void:
 	hp.text = "HP " + str(player.hp)
 	coins.text = "COINS " + str(player.coins)
+	if player.coins >= record:
+		self.record += 10
+		self.trash_velocity += Vector2(0, 500)
+		if self.spawn_timer.wait_time > 1:
+			self.spawn_timer.wait_time -= 0.1
+		print(str(player.coins) + ", new record!")
 
 func _physics_process(delta: float) -> void:
 	if player.hp <= 0:

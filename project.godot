@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="junk_hunter"
-run/main_scene="res://scenes/game_scene.tscn"
+run/main_scene="res://scenes/menu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Music="*res://scenes/music.tscn"
 
 [display]
 

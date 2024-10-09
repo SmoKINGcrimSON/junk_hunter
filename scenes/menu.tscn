@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=3 uid="uid://b15kx7ln1ix4n"]
+
+[ext_resource type="Texture2D" uid="uid://dx0fg5j7x3qfg" path="res://assets/img/planet.jpg" id="1_6r5rc"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_jj3ye"]
+[ext_resource type="FontFile" uid="uid://bdx4atijs5cen" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_vty25"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wysbb"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0g50y"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjkm6"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jj3ye")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00819923, 0.0107641, 0.0797268, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 255.0
+offset_top = 1.0
+offset_right = -251.0
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6r5rc")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.36952, 0.632359, 0.0553065, 1)
+z_index = 3
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -525.0
+offset_top = 10.0
+offset_right = 525.0
+offset_bottom = 111.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_vty25")
+theme_override_font_sizes/font_size = 100
+text = "JUNK HUNTER"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -232.5
+offset_top = -140.0
+offset_right = 232.5
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vty25")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_wysbb")
+text = "JUGAR"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vty25")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_0g50y")
+text = "OPCIONES"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_vty25")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_hjkm6")
+text = "SALIR"
+
+[connection signal="pressed" from="VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

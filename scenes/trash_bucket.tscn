@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxw3vl101b4gl"]
+[gd_scene load_steps=6 format=3 uid="uid://bxw3vl101b4gl"]
 
 [ext_resource type="Texture2D" uid="uid://bdy1u78e6e52o" path="res://assets/sprites/items/bucket.png" id="1_agipo"]
 [ext_resource type="Script" path="res://scripts/trash_bucket.gd" id="1_d783m"]
+[ext_resource type="AudioStream" uid="uid://dkc05ksvew6g0" path="res://assets/sounds/coin.wav" id="3_aps11"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eod3f"]
 size = Vector2(12, 15)
@@ -30,5 +31,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -8.5)
 shape = SubResource("RectangleShape2D_jkcap")
+
+[node name="PickUpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_aps11")
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
